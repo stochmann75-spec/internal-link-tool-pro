@@ -567,3 +567,65 @@ input[type="range"]::-moz-range-thumb:hover {
     grid-template-columns: 1fr;
   }
 }
+/* ============================================
+   Footer Styles
+   ============================================ */
+footer {
+  margin-top: var(--spacing-2xl);
+  padding: var(--spacing-xl) 0;
+  border-top: 1px solid hsla(0, 0%, 100%, 0.05);
+  position: relative;
+  z-index: 1;
+}
+
+.container-footer {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.footer-content {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+.footer-content p {
+  margin-bottom: var(--spacing-xs);
+  color: var(--text-secondary);
+}
+
+.footer-meta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+.footer-divider {
+  opacity: 0.3;
+}
+
+.footer-meta a {
+  color: var(--primary-light);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color var(--transition-fast);
+  border-bottom: 1px solid transparent;
+}
+
+.footer-meta a:hover {
+  color: white;
+  border-bottom-color: var(--primary-light);
+}
+
+@media (max-width: 768px) {
+  .footer-meta {
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+  
+  .footer-divider {
+    display: none;
+  }
+}
