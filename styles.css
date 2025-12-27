@@ -697,3 +697,37 @@ footer {
   font-weight: 600;
   margin-left: 4px;
 }
+
+/* ============================================
+   Features Grid Styles
+   ============================================ */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-xl);
+  margin-top: var(--spacing-lg);
+}
+
+.feature-item h3 {
+  margin-bottom: var(--spacing-sm);
+  color: var(--primary-light);
+  font-size: 1.25rem;
+}
+
+.feature-item p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.feature-item strong {
+  color: white;
+  border-bottom: 2px solid var(--primary);
+}
+
+@media (max-width: 768px) {
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+}
