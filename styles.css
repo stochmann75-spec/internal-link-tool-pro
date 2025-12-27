@@ -92,6 +92,15 @@ p {
 
 .hero-content {
   animation: reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  text-align: center;
+}
+
+.hero-badges {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+  flex-wrap: wrap;
 }
 
 .badge {
@@ -100,18 +109,20 @@ p {
   gap: 8px;
   background: var(--surface);
   border: 1px solid var(--border);
-  padding: 6px 14px;
+  padding: 8px 16px;
   border-radius: 100px;
   font-size: 13px;
   font-weight: 600;
   color: var(--accent);
-  margin-bottom: var(--space-3);
+  line-height: 1;
+  height: 36px;
 }
 
 .badge-beta {
-  color: #FFA726;
+  color: #ffa726;
   background: rgba(255, 167, 38, 0.1);
   border-color: rgba(255, 167, 38, 0.2);
+  padding: 8px 16px;
 }
 
 /* Tool Console Layout */
