@@ -299,6 +299,16 @@ footer a {
   font-weight: 600;
 }
 
+footer a:hover {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.footer-right a:hover {
+  color: var(--text) !important;
+}
+
 /* Animations */
 @keyframes reveal {
   from {
