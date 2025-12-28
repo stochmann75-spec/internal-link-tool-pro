@@ -230,11 +230,8 @@
                 <p>Architect PRO analyzes your entire site structure to inject semantically perfect internal links.
                     High-performance SEO automation for modern content teams.</p>
 
-                <div class="info-section mt-8" style="border:none; padding:0;">
-                    <div class="faq-item" style="margin:0;">
-                        <p style="font-size: 14px; opacity: 0.6;">Trusted by SEO architects worldwide. Zero
-                            configuration required.</p>
-                    </div>
+                <div class="hero-info">
+                    <p class="trust-badge">Trusted by SEO architects worldwide. Zero configuration required.</p>
                 </div>
             </div>
 
@@ -289,28 +286,18 @@
                     </div>
 
                     <!-- Stats Grid -->
-                    <div class="stats-grid"
-                        style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 24px;">
-                        <div class="stat-card"
-                            style="background: var(--bg); border: 1px solid var(--border); padding: 12px; border-radius: var(--radius-sm); text-align: center;">
-                            <span id="statLinks"
-                                style="display: block; font-size: 20px; font-weight: 700; color: var(--accent); font-family: var(--font-mono);">0</span>
-                            <span
-                                style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 600;">Links</span>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <span id="statLinks">0</span>
+                            <span class="stat-label">Links</span>
                         </div>
-                        <div class="stat-card"
-                            style="background: var(--bg); border: 1px solid var(--border); padding: 12px; border-radius: var(--radius-sm); text-align: center;">
-                            <span id="statCandidates"
-                                style="display: block; font-size: 20px; font-weight: 700; color: var(--accent); font-family: var(--font-mono);">0</span>
-                            <span
-                                style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 600;">Scanned</span>
+                        <div class="stat-card">
+                            <span id="statCandidates">0</span>
+                            <span class="stat-label">Scanned</span>
                         </div>
-                        <div class="stat-card"
-                            style="background: var(--bg); border: 1px solid var(--border); padding: 12px; border-radius: var(--radius-sm); text-align: center;">
-                            <span id="statWords"
-                                style="display: block; font-size: 20px; font-weight: 700; color: var(--accent); font-family: var(--font-mono);">0</span>
-                            <span
-                                style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 600;">Words</span>
+                        <div class="stat-card">
+                            <span id="statWords">0</span>
+                            <span class="stat-label">Words</span>
                         </div>
                     </div>
 
@@ -318,8 +305,7 @@
                         <code id="outputCode"></code>
                     </div>
 
-                    <button class="btn" id="resetBtn"
-                        style="margin-top:16px; background:var(--surface); color:var(--text); border:1px solid var(--border);">
+                    <button class="btn btn-secondary" id="resetBtn">
                         <i data-lucide="refresh-cw" size="16"></i> New Session
                     </button>
                 </div>
@@ -520,21 +506,15 @@
 
     <footer>
         <div class="container">
-            <div
-                style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-3);">
+            <div class="footer-wrap">
                 <div class="footer-left">
                     <p>© 2026 Internal Link Architect PRO <span class="beta-text">(BETA)</span></p>
-                    <p style="margin-top: 4px; font-size: 13px;">Built by <a href="https://stephanochmann.de/"
+                    <p class="built-by">Built by <a href="https://stephanochmann.de/"
                             target="_blank" rel="noopener">stephanochmann.de</a></p>
                 </div>
-                <div class="footer-right"
-                    style="display: flex; gap: var(--space-4); font-size: 13px; font-weight: 600;">
-                    <a href="https://stephanochmann.de/en/legalnotice/" target="_blank" rel="noopener"
-                        style="text-decoration: none; color: var(--text-muted); transition: color 0.2s;">Legal
-                        Notice</a>
-                    <a href="https://stephanochmann.de/en/privacypolicy/" target="_blank" rel="noopener"
-                        style="text-decoration: none; color: var(--text-muted); transition: color 0.2s;">Privacy
-                        Policy</a>
+                <div class="footer-right">
+                    <a href="https://stephanochmann.de/en/legalnotice/" target="_blank" rel="noopener">Legal Notice</a>
+                    <a href="https://stephanochmann.de/en/privacypolicy/" target="_blank" rel="noopener">Privacy Policy</a>
                 </div>
             </div>
         </div>
