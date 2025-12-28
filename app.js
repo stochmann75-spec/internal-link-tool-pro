@@ -92,12 +92,18 @@ async function processLinkInjection(sitemapUrl, blogUrl, numLinks) {
 }
 
 // ============================================
-// Fetch and Parse Sitemap
+// Fetch and Parse Sitemap (Handles Sitemap Index & Regular Sitemaps)
 // ============================================
-async function fetchAndParseSitemap(sitemapUrl, excludeUrl) {
+async function fetchAndParseSitemap(sitemapUrl, excludeUrl, visitedSitemaps = new Set()) {
     try {
+        // Prevent infinite loops and excessive recursion
+        if (visitedSitemaps.has(sitemapUrl) || visitedSitemaps.size > 20) return [];
+        visitedSitemaps.add(sitemapUrl);
+
+        updateProcessingText(`📡 Fetching: ${sitemapUrl.split('/').pop()}`);
+
         const response = await fetch(sitemapUrl);
-        if (!response.ok) throw new Error(`Failed to fetch sitemap: ${response.status}`);
+        if (!response.ok) throw new Error(`Status ${response.status}`);
 
         const text = await response.text();
         const parser = new DOMParser();
@@ -105,19 +111,53 @@ async function fetchAndParseSitemap(sitemapUrl, excludeUrl) {
 
         // Check for parsing errors
         const parserError = xmlDoc.querySelector('parsererror');
-        if (parserError) throw new Error('Invalid XML sitemap');
+        if (parserError) throw new Error('Invalid XML');
 
-        // Extract URLs
+        let allUrls = [];
+
+        // CASE 1: Sitemap Index (contains other sitemaps)
+        const sitemapElements = xmlDoc.querySelectorAll('sitemap > loc');
+        if (sitemapElements.length > 0) {
+            updateProcessingText(`📂 Sitemap Index detected...`);
+            const subSitemapUrls = Array.from(sitemapElements).map(el => el.textContent.trim());
+            
+            // Limit the number of sub-sitemaps to process for performance
+            // Usually we only care about 'post', 'page' or 'article' sitemaps
+            const filteredSubSitemaps = subSitemapUrls.filter(url => 
+                !url.includes('category') && !url.includes('tag') && !url.includes('author') && !url.includes('image')
+            ).slice(0, 10); // Safety limit
+
+            for (const subUrl of filteredSubSitemaps) {
+                const subUrls = await fetchAndParseSitemap(subUrl, excludeUrl, visitedSitemaps);
+                allUrls = allUrls.concat(subUrls);
+            }
+        }
+
+        // CASE 2: Regular Sitemap (contains direct URLs)
         const urlElements = xmlDoc.querySelectorAll('url > loc');
-        const urls = Array.from(urlElements)
-            .map(el => el.textContent.trim())
-            .filter(url => url !== excludeUrl && url !== excludeUrl + '/' && url + '/' !== excludeUrl);
+        if (urlElements.length > 0) {
+            const leafUrls = Array.from(urlElements)
+                .map(el => el.textContent.trim())
+                .filter(url => 
+                    url !== excludeUrl && 
+                    url !== excludeUrl + '/' && 
+                    url + '/' !== excludeUrl &&
+                    !url.endsWith('.xml') // Defensive check
+                );
+            allUrls = allUrls.concat(leafUrls);
+        }
 
-        if (urls.length === 0) throw new Error('No URLs found in sitemap');
+        // Final filtering and deduplication for the root call
+        if (visitedSitemaps.size === 1 && allUrls.length === 0) {
+            throw new Error('No URLs found in this sitemap structure.');
+        }
 
-        return urls;
+        return [...new Set(allUrls)]; // Return unique URLs
     } catch (error) {
-        throw new Error(`Sitemap error: ${error.message}`);
+        console.warn(`Skipping sitemap ${sitemapUrl}: ${error.message}`);
+        // If this was the root sitemap and it failed, throw error
+        if (visitedSitemaps.size === 1) throw new Error(`Sitemap error: ${error.message}`);
+        return [];
     }
 }
 
