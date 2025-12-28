@@ -23,6 +23,18 @@ numLinksSlider.addEventListener('input', (e) => {
     sliderValue.textContent = e.target.value;
 });
 
+// Helper for CORS-safe fetching
+async function fetchWithProxy(url) {
+    const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`;
+    const response = await fetch(proxyUrl);
+    if (!response.ok) throw new Error(`Proxy error: ${response.status}`);
+    const data = await response.json();
+    if (data.status && data.status.http_code >= 400) {
+        throw new Error(`Target access denied (HTTP ${data.status.http_code})`);
+    }
+    return data.contents;
+}
+
 // Form submission handler
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -102,10 +114,7 @@ async function fetchAndParseSitemap(sitemapUrl, excludeUrl, visitedSitemaps = ne
 
         updateProcessingText(`📡 Fetching: ${sitemapUrl.split('/').pop()}`);
 
-        const response = await fetch(sitemapUrl);
-        if (!response.ok) throw new Error(`Status ${response.status}`);
-
-        const text = await response.text();
+        const text = await fetchWithProxy(sitemapUrl);
         const parser = new DOMParser();
         const xmlDoc = parser.parseFromString(text, 'text/xml');
 
@@ -120,10 +129,10 @@ async function fetchAndParseSitemap(sitemapUrl, excludeUrl, visitedSitemaps = ne
         if (sitemapElements.length > 0) {
             updateProcessingText(`📂 Sitemap Index detected...`);
             const subSitemapUrls = Array.from(sitemapElements).map(el => el.textContent.trim());
-            
+
             // Limit the number of sub-sitemaps to process for performance
             // Usually we only care about 'post', 'page' or 'article' sitemaps
-            const filteredSubSitemaps = subSitemapUrls.filter(url => 
+            const filteredSubSitemaps = subSitemapUrls.filter(url =>
                 !url.includes('category') && !url.includes('tag') && !url.includes('author') && !url.includes('image')
             ).slice(0, 10); // Safety limit
 
@@ -138,9 +147,9 @@ async function fetchAndParseSitemap(sitemapUrl, excludeUrl, visitedSitemaps = ne
         if (urlElements.length > 0) {
             const leafUrls = Array.from(urlElements)
                 .map(el => el.textContent.trim())
-                .filter(url => 
-                    url !== excludeUrl && 
-                    url !== excludeUrl + '/' && 
+                .filter(url =>
+                    url !== excludeUrl &&
+                    url !== excludeUrl + '/' &&
                     url + '/' !== excludeUrl &&
                     !url.endsWith('.xml') // Defensive check
                 );
@@ -166,10 +175,7 @@ async function fetchAndParseSitemap(sitemapUrl, excludeUrl, visitedSitemaps = ne
 // ============================================
 async function fetchBlogPost(blogUrl) {
     try {
-        const response = await fetch(blogUrl);
-        if (!response.ok) throw new Error(`Failed to fetch blog post: ${response.status}`);
-
-        const html = await response.text();
+        const html = await fetchWithProxy(blogUrl);
 
         // Parse HTML
         const parser = new DOMParser();
