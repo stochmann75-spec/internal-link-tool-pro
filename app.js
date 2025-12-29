@@ -26,8 +26,9 @@ numLinksSlider.addEventListener('input', (e) => {
 // Helper for CORS-safe fetching with fallback proxies and timeout
 async function fetchWithProxy(url) {
     const proxies = [
-        (u) => `https://corsproxy.io/?url=${encodeURIComponent(u)}`,
-        (u) => `https://api.allorigins.win/get?url=${encodeURIComponent(u)}`
+        (u) => `https://corsproxy.io/?${encodeURIComponent(u)}`, // Corrected format
+        (u) => `https://api.allorigins.win/get?url=${encodeURIComponent(u)}`,
+        (u) => `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(u)}`
     ];
 
     let lastError = null;
@@ -36,32 +37,33 @@ async function fetchWithProxy(url) {
         try {
             const proxyUrl = getProxyUrl(url);
 
-            // Increased timeout to 30 seconds for larger sitemaps
             const controller = new AbortController();
             const timeoutId = setTimeout(() => controller.abort(), 30000);
 
             const response = await fetch(proxyUrl, { signal: controller.signal });
             clearTimeout(timeoutId);
 
-            if (!response.ok) continue;
+            if (!response.ok) {
+                console.warn(`Proxy ${proxyUrl} returned status ${response.status}`);
+                continue;
+            }
 
             if (proxyUrl.includes('allorigins')) {
                 const data = await response.json();
+                if (!data.contents) throw new Error("Empty content from AllOrigins");
                 return data.contents;
             } else {
-                return await response.text();
+                const text = await response.text();
+                if (!text) throw new Error("Empty response from proxy");
+                return text;
             }
         } catch (err) {
-            if (err.name === 'AbortError') {
-                lastError = new Error("Request timed out after 30 seconds. The source might be too large.");
-            } else {
-                lastError = err;
-            }
-            console.warn(`Proxy attempt failed: ${url}`, err);
+            lastError = err;
+            console.warn(`Proxy attempt failed:`, err);
         }
     }
 
-    throw new Error(lastError ? `Access failed: ${lastError.message}` : "Failed to fetch resource via proxy");
+    throw new Error(`Access failed: ${url} could not be reached. Error: ${lastError?.message || 'Unknown'}. Please ensure the URL is correct and the server allows external access.`);
 }
 
 // Form submission handler
