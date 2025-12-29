@@ -123,9 +123,11 @@ h1 {
   font-family: var(--font-heading);
   font-size: clamp(40px, 8vw, 56px);
   font-weight: 700;
-  line-height: 1.1;
+  line-height: 1.2;
   letter-spacing: -0.02em;
   margin-bottom: 24px;
+  padding-bottom: 4px;
+  /* Added to prevent clipping of descenders */
   background: linear-gradient(to bottom right, #fff 30%, rgba(255, 255, 255, 0.7));
   background-clip: text;
   -webkit-background-clip: text;
@@ -151,6 +153,8 @@ h3 {
 p {
   color: var(--text-secondary);
   max-width: 65ch;
+  line-height: 1.6;
+  /* Increased for better legibility */
 }
 
 .label-text {
@@ -201,6 +205,18 @@ p {
 .badge-beta {
   color: var(--accent);
   border-color: rgba(255, 107, 53, 0.2);
+}
+
+.hero-info {
+  margin-top: 24px;
+}
+
+.trust-badge {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-muted);
+  line-height: 1.5;
+  padding-bottom: 2px;
 }
 
 /* Tool Console - The Glass Card */
