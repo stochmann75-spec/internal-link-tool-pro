@@ -2,21 +2,21 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Internal Linking Tool - Automated SEO Link Architect PRO</title>
-    <meta name="description"
-        content="Maximize your SEO with the ultimate internal linking tool. Automatically inject semantically relevant internal links into your blog posts for better rankings and user engagement.">
-    <meta name="keywords" content="internal linking tool, seo internal links, automated linking, seo optimization tool">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Internal Linking Tool - Automated SEO Link Architect PRO</title>
+  <meta name="description"
+    content="Maximize your SEO with the ultimate internal linking tool. Automatically inject semantically relevant internal links into your blog posts for better rankings and user engagement.">
+  <meta name="keywords" content="internal linking tool, seo internal links, automated linking, seo optimization tool">
 
-    <link rel="stylesheet" href="styles.css">
-    <link rel="canonical" href="https://internallinking.stephanochmann.de/">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="canonical" href="https://internallinking.stephanochmann.de/">
 
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
 
-    <!-- Structured Data for SEO -->
-    <script type="application/ld+json">
+  <!-- Structured Data for SEO -->
+  <script type="application/ld+json">
     [
       {
         "@context": "https://schema.org",
@@ -218,320 +218,322 @@
 </head>
 
 <body>
-    <main class="container">
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="hero-content">
-                <div class="hero-badges">
-                    <div class="badge"><i data-lucide="sparkles" size="14"></i> AI-Powered Relevance</div>
-                    <div class="badge badge-beta">BETA V1.2</div>
-                </div>
-                <h1>The Ultimate<br>Internal Linking Tool</h1>
-                <p>Architect PRO analyzes your entire site structure to inject semantically perfect internal links.
-                    High-performance SEO automation for modern content teams.</p>
+  <!-- Background Ornaments -->
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
 
-                <div class="hero-info">
-                    <p class="trust-badge">Trusted by SEO architects worldwide. Zero configuration required.</p>
-                </div>
-            </div>
-
-            <div class="tool-console">
-                <form id="linkForm">
-                    <div class="input-group">
-                        <label><i data-lucide="map" size="14" style="vertical-align: middle; margin-right: 6px;"></i>
-                            Sitemap XML Source</label>
-                        <input type="url" id="sitemapUrl" name="sitemapUrl" placeholder="https://domain.com/sitemap.xml"
-                            required>
-                    </div>
-
-                    <div class="input-group">
-                        <label><i data-lucide="file-text" size="14"
-                                style="vertical-align: middle; margin-right: 6px;"></i> Target Article URL</label>
-                        <input type="url" id="blogUrl" name="blogUrl" placeholder="https://domain.com/blog/article"
-                            required>
-                    </div>
-
-                    <div class="input-group">
-                        <div class="slider-container">
-                            <div class="slider-header">
-                                <label><i data-lucide="link" size="14"
-                                        style="vertical-align: middle; margin-right: 6px;"></i> Link Density</label>
-                                <span class="slider-val" id="sliderValue">5</span>
-                            </div>
-                            <input type="range" id="numLinks" name="numLinks" min="1" max="20" value="5">
-                        </div>
-                    </div>
-
-                    <button type="submit" class="btn">
-                        <span>Initialize Link Injection</span>
-                        <i data-lucide="chevron-right" size="18"></i>
-                    </button>
-                </form>
-
-                <!-- Processing UI -->
-                <div class="processing" id="processing">
-                    <div class="spinner"></div>
-                    <p class="processing-text" id="processingText">Crunching semantic data...</p>
-                </div>
-
-                <!-- Results UI -->
-                <div class="results" id="results" style="margin-top:24px;">
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
-                        <h3 style="font-size:16px; color:var(--success);">Analysis Complete</h3>
-                        <div class="badges" style="margin-bottom:0;">
-                            <button class="btn" id="copyBtn" style="width:auto; padding:8px 16px; font-size:13px;">
-                                <i data-lucide="copy" size="14"></i> Copy HTML
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Stats Grid -->
-                    <div class="stats-grid">
-                        <div class="stat-card">
-                            <span id="statLinks">0</span>
-                            <span class="stat-label">Links</span>
-                        </div>
-                        <div class="stat-card">
-                            <span id="statCandidates">0</span>
-                            <span class="stat-label">Scanned</span>
-                        </div>
-                        <div class="stat-card">
-                            <span id="statWords">0</span>
-                            <span class="stat-label">Words</span>
-                        </div>
-                    </div>
-
-                    <div class="output-container">
-                        <code id="outputCode"></code>
-                    </div>
-
-                    <button class="btn btn-secondary" id="resetBtn">
-                        <i data-lucide="refresh-cw" size="16"></i> New Session
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Features -->
-        <section class="info-section">
-            <h2>Engineered for Search Authority</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <i data-lucide="zap" size="24"></i>
-                    <h3>Automated SEO Growth</h3>
-                    <p>Internal linking is a core strategy. This <strong>internal linking tool</strong> automates the
-                        heavy lifting, boosting rankings without manual guesswork.</p>
-                </div>
-                <div class="feature-card">
-                    <i data-lucide="cpu" size="24"></i>
-                    <h3>Semantic Precision</h3>
-                    <p>Advanced AI mapping ensures every link is contextually relevant, improving E-E-A-T and topical
-                        authority across your entire domain.</p>
-                </div>
-                <div class="feature-card">
-                    <i data-lucide="bar-chart-3" size="24"></i>
-                    <h3>Signal Optimization</h3>
-                    <p>Increase crawl depth and time-on-site. Provide users with the most relevant next steps to
-                        maximize conversion funnels.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- FAQ Area -->
-        <section class="info-section">
-            <h2 style="text-align: center; margin-bottom: var(--space-4);">Strategic Internal Linking FAQ</h2>
-            <div class="faq-container">
-                <details class="faq-item">
-                    <summary>What Is Internal Linking in SEO?</summary>
-                    <div class="faq-content">
-                        <p>Internal linking is the practice of connecting pages within the same website via hyperlinks.
-                            It helps users navigate, establishes information hierarchy, and distributes "link equity"
-                            (ranking power) throughout the site.</p>
-                    </div>
-                </details>
-                <details class="faq-item">
-                    <summary>How Should Internal Link Architecture Be Structured?</summary>
-                    <div class="faq-content">
-                        <p>A healthy architecture follows a "hub-and-spoke" or "pyramid" model. Your homepage should
-                            link to main categories, which link to sub-pages, ensuring no page is more than 3 clicks
-                            away from the home.</p>
-                    </div>
-                </details>
-                <details class="faq-item">
-                    <summary>How Do Pillar Pages and Topic Clusters Work?</summary>
-                    <div class="faq-content">
-                        <p>Pillar pages are high-level guides that cover a broad topic, while topic clusters comprise
-                            detailed sub-topic articles. Internal links connect these clusters to the pillar, signaling
-                            topical authority to search engines.</p>
-                    </div>
-                </details>
-                <details class="faq-item">
-                    <summary>How Should Anchor Text Be Optimized for Internal Links?</summary>
-                    <div class="faq-content">
-                        <p>Anchor text should be descriptive, relevant, and contain target keywords without being
-                            over-optimized. It provides context to both users and search engines about the page being
-                            linked to.</p>
-                    </div>
-                </details>
-                <details class="faq-item">
-                    <summary>How Does PageRank Flow Through Internal Links?</summary>
-                    <div class="faq-content">
-                        <p>Internal links act as conduits for PageRank (link equity). By linking from high-authority
-                            pages to newer or lower-ranking content, you can boost the visibility and ranking potential
-                            of the target pages.</p>
-                    </div>
-                </details>
-                <details class="faq-item">
-                    <summary>How Should Ecommerce Sites Use Internal Linking?</summary>
-                    <div class="faq-content">
-                        <p>Ecommerce sites should link from category pages to top-selling products, use "Related
-                            Products" sections, and implement breadcrumbs to help Google understand product hierarchies
-                            and improve crawlability.</p>
-                    </div>
-                </details>
-                <details class="faq-item">
-                    <summary>How Should Blogs Structure Internal Links?</summary>
-                    <div class="faq-content">
-                        <p>Blogs should link contextually within the body text to related articles. This keeps users on
-                            the site longer (dwell time) and helps Google discover and index older evergreen content.
-                        </p>
-                    </div>
-                </details>
-                <details class="faq-item">
-                    <summary>How Do Internal Links Affect Crawlability and Indexation?</summary>
-                    <div class="faq-content">
-                        <p>Search engines use links to discover new content. A robust internal link structure ensures
-                            that crawlers can reach every corner of your site, preventing "orphaned" pages from being
-                            missed.</p>
-                    </div>
-                </details>
-                <details class="faq-item">
-                    <summary>What Are Orphan Pages and How Do You Fix Them?</summary>
-                    <div class="faq-content">
-                        <p>Orphan pages are pages with zero incoming internal links. They are difficult for Google to
-                            find. You fix them by adding relevant links from high-traffic pages back to the orphaned
-                            content.</p>
-                    </div>
-                </details>
-                <details class="faq-item">
-                    <summary>How Do You Perform an Internal Linking Audit?</summary>
-                    <div class="faq-content">
-                        <p>An audit involves checking for broken links, identifying pages with too few links, analyzing
-                            anchor text distribution, and ensuring that your most important pages received the most
-                            internal link equity.</p>
-                    </div>
-                </details>
-                <details class="faq-item">
-                    <summary>What Are Contextual Internal Links and Why Do They Matter?</summary>
-                    <div class="faq-content">
-                        <p>Contextual links are placed within the body of an article. They are highly relevant to the
-                            surrounding text and are generally considered more valuable by Google than footer or sidebar
-                            links.</p>
-                    </div>
-                </details>
-                <details class="faq-item">
-                    <summary>How Do Navigation and Breadcrumb Links Impact SEO?</summary>
-                    <div class="faq-content">
-                        <p>Navigation links provide a global site structure, while breadcrumbs offer a clear path back
-                            to the home page. Both help search engines understand the relationship between different
-                            levels of a website.</p>
-                    </div>
-                </details>
-                <details class="faq-item">
-                    <summary>How Can Internal Linking Be Automated?</summary>
-                    <div class="faq-content">
-                        <p>Tools like Internal Link Architect PRO automate the process by scanning your sitemap and
-                            injecting contextually relevant links into your content based on semantic similarity and
-                            keyword analysis.</p>
-                    </div>
-                </details>
-                <details class="faq-item">
-                    <summary>Are Sitewide Links or Contextual Links Better for SEO?</summary>
-                    <div class="faq-content">
-                        <p>Contextual links are typically better for ranking specific articles as they provide more
-                            relevance. Sitewide links (header/footer) are better for navigation and establishing overall
-                            site authority.</p>
-                    </div>
-                </details>
-                <details class="faq-item">
-                    <summary>How Should Large Websites Handle Internal Linking?</summary>
-                    <div class="faq-content">
-                        <p>Large sites should use automated tools and taxonomies (categories/tags) to manage links.
-                            Implementing a structured "Related Posts" or "Popular Content" widget can also help scale
-                            linking efforts.</p>
-                    </div>
-                </details>
-                <details class="faq-item">
-                    <summary>What Are the Most Common Internal Linking Mistakes?</summary>
-                    <div class="faq-content">
-                        <p>Common errors include using "click here" as anchor text, linking to irrelevant pages, having
-                            broken links, and creating "link loops" where pages only link to each other without
-                            hierarchy.</p>
-                    </div>
-                </details>
-                <details class="faq-item">
-                    <summary>What Are the Best Tools for Internal Linking?</summary>
-                    <div class="faq-content">
-                        <p>Professional tools include Internal Link Architect PRO for automated injection, specialized
-                            plugins for CMS platforms, and SEO crawlers like Screaming Frog for auditing existing
-                            structures.</p>
-                    </div>
-                </details>
-                <details class="faq-item">
-                    <summary>How Can Link Depth Be Optimized for SEO?</summary>
-                    <div class="faq-content">
-                        <p>Minimize link depth—the number of clicks from the homepage—to ensures that crawlers and users
-                            can access any page quickly. Ideally, all content should be within 3 clicks of the root.</p>
-                    </div>
-                </details>
-                <details class="faq-item">
-                    <summary>How Does Internal Linking Work for International Websites?</summary>
-                    <div class="faq-content">
-                        <p>International sites should link between language versions (hreflang) and ensure that internal
-                            links stay within the same language/region cluster to provide a seamless user experience.
-                        </p>
-                    </div>
-                </details>
-                <details class="faq-item">
-                    <summary>What Are Advanced Internal Linking Strategies?</summary>
-                    <div class="faq-content">
-                        <p>Advanced strategies include "Link Sculpting" (controlling the flow of equity), using data
-                            from Search Console to link to pages that are on the verge of ranking, and implementing
-                            automated semantic clusters.</p>
-                    </div>
-                </details>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <div class="footer-wrap">
-                <div class="footer-left">
-                    <p>© 2026 Internal Link Architect PRO <span class="beta-text">(BETA)</span></p>
-                    <p class="built-by">Built by <a href="https://stephanochmann.de/"
-                            target="_blank" rel="noopener">stephanochmann.de</a></p>
-                </div>
-                <div class="footer-right">
-                    <a href="https://stephanochmann.de/en/legalnotice/" target="_blank" rel="noopener">Legal Notice</a>
-                    <a href="https://stephanochmann.de/en/privacypolicy/" target="_blank" rel="noopener">Privacy Policy</a>
-                </div>
-            </div>
+  <main class="container">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <div class="hero-badges">
+          <div class="badge"><i data-lucide="sparkles" size="14"></i> AI-Powered Relevance</div>
+          <div class="badge badge-beta">BETA V1.2</div>
         </div>
-    </footer>
+        <h1>The Ultimate<br>Internal Linking Tool</h1>
+        <p>Architect PRO analyzes your entire site structure to inject semantically perfect internal links.
+          High-performance SEO automation for modern content teams.</p>
 
-    <script src="app.js"></script>
-    <script>
-        // Initialize icons
-        lucide.createIcons();
+        <div class="hero-info">
+          <p class="trust-badge">Trusted by SEO architects worldwide. Zero configuration required.</p>
+        </div>
+      </div>
 
-        // Ensure slider updates value
-        const slider = document.getElementById('numLinks');
-        const val = document.getElementById('sliderValue');
-        slider.oninput = function () {
-            val.innerText = this.value;
-        }
-    </script>
+      <div class="tool-console">
+        <form id="linkForm">
+          <div class="input-group">
+            <label><i data-lucide="map" size="14" style="vertical-align: middle; margin-right: 6px;"></i>
+              Sitemap XML Source</label>
+            <input type="url" id="sitemapUrl" name="sitemapUrl" placeholder="https://domain.com/sitemap.xml" required>
+          </div>
+
+          <div class="input-group">
+            <label><i data-lucide="file-text" size="14" style="vertical-align: middle; margin-right: 6px;"></i> Target
+              Article URL</label>
+            <input type="url" id="blogUrl" name="blogUrl" placeholder="https://domain.com/blog/article" required>
+          </div>
+
+          <div class="input-group">
+            <div class="slider-container">
+              <div class="slider-header">
+                <label><i data-lucide="link" size="14" style="vertical-align: middle; margin-right: 6px;"></i> Link
+                  Density</label>
+                <span class="slider-val" id="sliderValue">5</span>
+              </div>
+              <input type="range" id="numLinks" name="numLinks" min="1" max="20" value="5">
+            </div>
+          </div>
+
+          <button type="submit" class="btn">
+            <span>Initialize Link Injection</span>
+            <i data-lucide="chevron-right" size="18"></i>
+          </button>
+        </form>
+
+        <!-- Processing UI -->
+        <div class="processing" id="processing">
+          <div class="spinner"></div>
+          <p class="processing-text" id="processingText">Crunching semantic data...</p>
+        </div>
+
+        <!-- Results UI -->
+        <div class="results" id="results" style="margin-top:24px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+            <h3 style="font-size:16px; color:var(--success);">Analysis Complete</h3>
+            <div class="badges" style="margin-bottom:0;">
+              <button class="btn" id="copyBtn" style="width:auto; padding:8px 16px; font-size:13px;">
+                <i data-lucide="copy" size="14"></i> Copy HTML
+              </button>
+            </div>
+          </div>
+
+          <!-- Stats Grid -->
+          <div class="stats-grid">
+            <div class="stat-card">
+              <span id="statLinks">0</span>
+              <span class="stat-label">Links</span>
+            </div>
+            <div class="stat-card">
+              <span id="statCandidates">0</span>
+              <span class="stat-label">Scanned</span>
+            </div>
+            <div class="stat-card">
+              <span id="statWords">0</span>
+              <span class="stat-label">Words</span>
+            </div>
+          </div>
+
+          <div class="output-container">
+            <code id="outputCode"></code>
+          </div>
+
+          <button class="btn btn-secondary" id="resetBtn">
+            <i data-lucide="refresh-cw" size="16"></i> New Session
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="info-section">
+      <h2>Engineered for Search Authority</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <i data-lucide="zap" size="24"></i>
+          <h3>Automated SEO Growth</h3>
+          <p>Internal linking is a core strategy. This <strong>internal linking tool</strong> automates the
+            heavy lifting, boosting rankings without manual guesswork.</p>
+        </div>
+        <div class="feature-card">
+          <i data-lucide="cpu" size="24"></i>
+          <h3>Semantic Precision</h3>
+          <p>Advanced AI mapping ensures every link is contextually relevant, improving E-E-A-T and topical
+            authority across your entire domain.</p>
+        </div>
+        <div class="feature-card">
+          <i data-lucide="bar-chart-3" size="24"></i>
+          <h3>Signal Optimization</h3>
+          <p>Increase crawl depth and time-on-site. Provide users with the most relevant next steps to
+            maximize conversion funnels.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Area -->
+    <section class="info-section">
+      <h2 style="text-align: center; margin-bottom: var(--space-4);">Strategic Internal Linking FAQ</h2>
+      <div class="faq-container">
+        <details class="faq-item">
+          <summary>What Is Internal Linking in SEO?</summary>
+          <div class="faq-content">
+            <p>Internal linking is the practice of connecting pages within the same website via hyperlinks.
+              It helps users navigate, establishes information hierarchy, and distributes "link equity"
+              (ranking power) throughout the site.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>How Should Internal Link Architecture Be Structured?</summary>
+          <div class="faq-content">
+            <p>A healthy architecture follows a "hub-and-spoke" or "pyramid" model. Your homepage should
+              link to main categories, which link to sub-pages, ensuring no page is more than 3 clicks
+              away from the home.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>How Do Pillar Pages and Topic Clusters Work?</summary>
+          <div class="faq-content">
+            <p>Pillar pages are high-level guides that cover a broad topic, while topic clusters comprise
+              detailed sub-topic articles. Internal links connect these clusters to the pillar, signaling
+              topical authority to search engines.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>How Should Anchor Text Be Optimized for Internal Links?</summary>
+          <div class="faq-content">
+            <p>Anchor text should be descriptive, relevant, and contain target keywords without being
+              over-optimized. It provides context to both users and search engines about the page being
+              linked to.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>How Does PageRank Flow Through Internal Links?</summary>
+          <div class="faq-content">
+            <p>Internal links act as conduits for PageRank (link equity). By linking from high-authority
+              pages to newer or lower-ranking content, you can boost the visibility and ranking potential
+              of the target pages.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>How Should Ecommerce Sites Use Internal Linking?</summary>
+          <div class="faq-content">
+            <p>Ecommerce sites should link from category pages to top-selling products, use "Related
+              Products" sections, and implement breadcrumbs to help Google understand product hierarchies
+              and improve crawlability.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>How Should Blogs Structure Internal Links?</summary>
+          <div class="faq-content">
+            <p>Blogs should link contextually within the body text to related articles. This keeps users on
+              the site longer (dwell time) and helps Google discover and index older evergreen content.
+            </p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>How Do Internal Links Affect Crawlability and Indexation?</summary>
+          <div class="faq-content">
+            <p>Search engines use links to discover new content. A robust internal link structure ensures
+              that crawlers can reach every corner of your site, preventing "orphaned" pages from being
+              missed.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>What Are Orphan Pages and How Do You Fix Them?</summary>
+          <div class="faq-content">
+            <p>Orphan pages are pages with zero incoming internal links. They are difficult for Google to
+              find. You fix them by adding relevant links from high-traffic pages back to the orphaned
+              content.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>How Do You Perform an Internal Linking Audit?</summary>
+          <div class="faq-content">
+            <p>An audit involves checking for broken links, identifying pages with too few links, analyzing
+              anchor text distribution, and ensuring that your most important pages received the most
+              internal link equity.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>What Are Contextual Internal Links and Why Do They Matter?</summary>
+          <div class="faq-content">
+            <p>Contextual links are placed within the body of an article. They are highly relevant to the
+              surrounding text and are generally considered more valuable by Google than footer or sidebar
+              links.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>How Do Navigation and Breadcrumb Links Impact SEO?</summary>
+          <div class="faq-content">
+            <p>Navigation links provide a global site structure, while breadcrumbs offer a clear path back
+              to the home page. Both help search engines understand the relationship between different
+              levels of a website.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>How Can Internal Linking Be Automated?</summary>
+          <div class="faq-content">
+            <p>Tools like Internal Link Architect PRO automate the process by scanning your sitemap and
+              injecting contextually relevant links into your content based on semantic similarity and
+              keyword analysis.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>Are Sitewide Links or Contextual Links Better for SEO?</summary>
+          <div class="faq-content">
+            <p>Contextual links are typically better for ranking specific articles as they provide more
+              relevance. Sitewide links (header/footer) are better for navigation and establishing overall
+              site authority.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>How Should Large Websites Handle Internal Linking?</summary>
+          <div class="faq-content">
+            <p>Large sites should use automated tools and taxonomies (categories/tags) to manage links.
+              Implementing a structured "Related Posts" or "Popular Content" widget can also help scale
+              linking efforts.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>What Are the Most Common Internal Linking Mistakes?</summary>
+          <div class="faq-content">
+            <p>Common errors include using "click here" as anchor text, linking to irrelevant pages, having
+              broken links, and creating "link loops" where pages only link to each other without
+              hierarchy.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>What Are the Best Tools for Internal Linking?</summary>
+          <div class="faq-content">
+            <p>Professional tools include Internal Link Architect PRO for automated injection, specialized
+              plugins for CMS platforms, and SEO crawlers like Screaming Frog for auditing existing
+              structures.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>How Can Link Depth Be Optimized for SEO?</summary>
+          <div class="faq-content">
+            <p>Minimize link depth—the number of clicks from the homepage—to ensures that crawlers and users
+              can access any page quickly. Ideally, all content should be within 3 clicks of the root.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>How Does Internal Linking Work for International Websites?</summary>
+          <div class="faq-content">
+            <p>International sites should link between language versions (hreflang) and ensure that internal
+              links stay within the same language/region cluster to provide a seamless user experience.
+            </p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>What Are Advanced Internal Linking Strategies?</summary>
+          <div class="faq-content">
+            <p>Advanced strategies include "Link Sculpting" (controlling the flow of equity), using data
+              from Search Console to link to pages that are on the verge of ranking, and implementing
+              automated semantic clusters.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-wrap">
+        <div class="footer-left">
+          <p>© 2026 Internal Link Architect PRO <span class="beta-text">(BETA)</span></p>
+          <p class="built-by">Built by <a href="https://stephanochmann.de/" target="_blank"
+              rel="noopener">stephanochmann.de</a></p>
+        </div>
+        <div class="footer-right">
+          <a href="https://stephanochmann.de/en/legalnotice/" target="_blank" rel="noopener">Legal Notice</a>
+          <a href="https://stephanochmann.de/en/privacypolicy/" target="_blank" rel="noopener">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+  <script>
+    // Initialize icons
+    lucide.createIcons();
+
+    // Ensure slider updates value
+    const slider = document.getElementById('numLinks');
+    const val = document.getElementById('sliderValue');
+    slider.oninput = function () {
+      val.innerText = this.value;
+    }
+  </script>
 </body>
 
 </html>

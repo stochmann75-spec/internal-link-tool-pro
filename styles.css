@@ -74,6 +74,47 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 24px;
+  position: relative;
+  z-index: 10;
+}
+
+/* Background Ornament Glows */
+.bg-glow {
+  position: fixed;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: var(--primary);
+  filter: blur(120px);
+  opacity: 0.1;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.bg-glow-1 {
+  top: -200px;
+  left: -200px;
+  animation: glowPulse 10s infinite alternate;
+}
+
+.bg-glow-2 {
+  bottom: -200px;
+  right: -200px;
+  background: var(--accent);
+  opacity: 0.05;
+  animation: glowPulse 8s infinite alternate-reverse;
+}
+
+@keyframes glowPulse {
+  from {
+    transform: scale(1) translate(0, 0);
+    opacity: 0.1;
+  }
+
+  to {
+    transform: scale(1.2) translate(5%, 5%);
+    opacity: 0.15;
+  }
 }
 
 /* Typography Scale */
@@ -85,6 +126,7 @@ h1 {
   letter-spacing: -0.02em;
   margin-bottom: 24px;
   background: linear-gradient(to bottom right, #fff 30%, rgba(255, 255, 255, 0.7));
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
