@@ -23,16 +23,41 @@ numLinksSlider.addEventListener('input', (e) => {
     sliderValue.textContent = e.target.value;
 });
 
-// Helper for CORS-safe fetching
+// Helper for CORS-safe fetching with fallback proxies and timeout
 async function fetchWithProxy(url) {
-    const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`;
-    const response = await fetch(proxyUrl);
-    if (!response.ok) throw new Error(`Proxy error: ${response.status}`);
-    const data = await response.json();
-    if (data.status && data.status.http_code >= 400) {
-        throw new Error(`Target access denied (HTTP ${data.status.http_code})`);
+    const proxies = [
+        (u) => `https://corsproxy.io/?url=${encodeURIComponent(u)}`,
+        (u) => `https://api.allorigins.win/get?url=${encodeURIComponent(u)}`
+    ];
+
+    let lastError = null;
+
+    for (const getProxyUrl of proxies) {
+        try {
+            const proxyUrl = getProxyUrl(url);
+
+            // Set a 10-second timeout for the proxy request
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 10000);
+
+            const response = await fetch(proxyUrl, { signal: controller.signal });
+            clearTimeout(timeoutId);
+
+            if (!response.ok) continue;
+
+            if (proxyUrl.includes('allorigins')) {
+                const data = await response.json();
+                return data.contents;
+            } else {
+                return await response.text();
+            }
+        } catch (err) {
+            lastError = err;
+            console.warn(`Proxy failed or timed out, trying next...`, err);
+        }
     }
-    return data.contents;
+
+    throw new Error(lastError ? `Access failed: The target site may be blocking requests or is too slow. Error: ${lastError.message}` : "Failed to fetch resource via proxy");
 }
 
 // Form submission handler
