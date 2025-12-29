@@ -36,9 +36,9 @@ async function fetchWithProxy(url) {
         try {
             const proxyUrl = getProxyUrl(url);
 
-            // Set a 10-second timeout for the proxy request
+            // Increased timeout to 30 seconds for larger sitemaps
             const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 10000);
+            const timeoutId = setTimeout(() => controller.abort(), 30000);
 
             const response = await fetch(proxyUrl, { signal: controller.signal });
             clearTimeout(timeoutId);
@@ -52,12 +52,16 @@ async function fetchWithProxy(url) {
                 return await response.text();
             }
         } catch (err) {
-            lastError = err;
-            console.warn(`Proxy failed or timed out, trying next...`, err);
+            if (err.name === 'AbortError') {
+                lastError = new Error("Request timed out after 30 seconds. The source might be too large.");
+            } else {
+                lastError = err;
+            }
+            console.warn(`Proxy attempt failed: ${url}`, err);
         }
     }
 
-    throw new Error(lastError ? `Access failed: The target site may be blocking requests or is too slow. Error: ${lastError.message}` : "Failed to fetch resource via proxy");
+    throw new Error(lastError ? `Access failed: ${lastError.message}` : "Failed to fetch resource via proxy");
 }
 
 // Form submission handler
