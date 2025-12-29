@@ -17,8 +17,9 @@
   --primary-gradient: linear-gradient(135deg, #6D28D9 0%, #4C1D95 100%);
 
   --accent: #FF6B35;
+  --accent-top: #FF9E75;
   --accent-hover: #FF8A5B;
-  --accent-glow: rgba(255, 107, 53, 0.4);
+  --accent-glow: rgba(255, 107, 53, 0.5);
 
   --text-primary: #FFFFFF;
   --text-secondary: #9CA3AF;
@@ -300,9 +301,9 @@ input[type="range"]::-webkit-slider-thumb:hover {
 /* Button System */
 .btn {
   width: 100%;
-  background: var(--accent);
+  background: linear-gradient(180deg, var(--accent-top) 0%, var(--accent) 100%);
   color: var(--text-primary);
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 18px 24px;
   border-radius: var(--radius-sm);
   font-size: 16px;
@@ -313,13 +314,35 @@ input[type="range"]::-webkit-slider-thumb:hover {
   justify-content: center;
   gap: 12px;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: var(--shadow-button);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.6),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.1),
+    0 4px 14px 0 var(--accent-glow);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s ease;
 }
 
 .btn:hover {
-  background: var(--accent-hover);
   transform: translateY(-2px);
-  box-shadow: 0 12px 30px -5px rgba(255, 107, 53, 0.5);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.7),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.1),
+    0 12px 30px -5px var(--accent-glow);
+}
+
+.btn:hover::after {
+  left: 100%;
 }
 
 .btn:active {
