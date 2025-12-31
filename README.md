@@ -1,4 +1,4 @@
-# 🔗 Internal Link Architect PRO
+# 🔗 Internal Link Tool PRO
 
 > **Automatically inject semantically relevant internal links into your blog posts to maximize SEO value and user engagement.**
 
@@ -152,7 +152,7 @@ Most modern blogs and sitemaps have CORS enabled by default.
 ## 📁 Project Structure
 
 ```
-internal-link-architect-pro/
+internal-link-tool-pro/
 ├── index.html          # Main application
 ├── styles.css          # Design system
 ├── app.js             # Core functionality
